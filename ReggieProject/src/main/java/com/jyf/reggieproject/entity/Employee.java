@@ -3,6 +3,7 @@ package com.jyf.reggieproject.entity;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
  * 员工实体类
  */
 @Data
+@ToString
 public class Employee implements Serializable {
     private static final long serialVersionUID = 1L;
 

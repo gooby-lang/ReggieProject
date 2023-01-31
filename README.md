@@ -26,3 +26,11 @@
     +   针对开发过程中需要捕获的异常，需要创建全局异常捕获，然后返回给前端
 +   修改管理员操作
     +   对于js来说，id传到前端的时候会有精度丢失，需要配置对象映射器，将long类型的id映射成string显示
+
+## DAY3：
+
++   公共字段自动填充
+    +   客户端每次发送HTTP请求时，对应的服务端都会分配一个新的线程来处理，处理过程中涉及到下面方法都属于一个线程
+        +   LoginCheckFilter的doFilter方法
+        +   EmployeeController的update方法
+        +   MyMetaObjectHandler的updateFill方法

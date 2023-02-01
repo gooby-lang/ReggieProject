@@ -27,10 +27,41 @@
 +   修改管理员操作
     +   对于js来说，id传到前端的时候会有精度丢失，需要配置对象映射器，将long类型的id映射成string显示
 
-## DAY3：
+## DAY3：分类管理
 
 +   公共字段自动填充
     +   客户端每次发送HTTP请求时，对应的服务端都会分配一个新的线程来处理，处理过程中涉及到下面方法都属于一个线程
         +   LoginCheckFilter的doFilter方法
         +   EmployeeController的update方法
         +   MyMetaObjectHandler的updateFill方法
+
+## DAY4：菜品管理
+
++   文件上传与下载
+
+    +   需要在相应Controller层中对应方法参数中加入MultipartFile，其中参数名必须与前端form data中的name属性值一致，或者在参数前加入@RequestPart注解
+
+    +   ```
+        @PostMapping("/upload")
+        public R<String> upload(@RequestPart("file") MultipartFile file) {
+            return null;
+        }
+        ```
+
+    +   但是file是一个临时文件，需要使用transferTo方法转存到其他地方
+
+        +   可以使用UUID来命名需要转存的文件名，防止重复名称导致的文件覆盖
+        +   转存时需要保证文件夹存在
+
+    +   需要图片回显，可以使用输入输出流来读取即可
+
++   新增菜品
+
+    +   如果前端返回的数据中没有和实体类对应，需要使用DTO来传输
+    +   由于对多张表进行操作，需要开启事务注解@Transactional
+
++   菜品信息分页查询
+
+    +   由于数据库只存储了分类的id，所以需要向前端返回DishDto实例
+    +   使用Dto可以避免写多表查询
+

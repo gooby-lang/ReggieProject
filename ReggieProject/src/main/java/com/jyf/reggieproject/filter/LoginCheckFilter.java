@@ -32,7 +32,8 @@ public class LoginCheckFilter implements Filter {
         String[] urls = new String[] {
                 "/employee/login",
                 "/employee/logout",
-                "/static/**"
+                "/static/**",
+                "/common/**"
         };
         boolean ok = check(urls, requestURI);
         if (ok) {

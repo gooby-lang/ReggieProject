@@ -29,11 +29,13 @@ public class LoginCheckFilter implements Filter {
         log.info("本次请求URI为{}", requestURI);
 
         //判断本次请求是否需要处理
+        //以下是需要放行的
         String[] urls = new String[] {
                 "/employee/login",
                 "/employee/logout",
                 "/static/**",
-                "/common/**"
+                "/common/**",
+                "/dish/**"
         };
         boolean ok = check(urls, requestURI);
         if (ok) {
